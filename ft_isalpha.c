@@ -6,15 +6,15 @@
 /*   By: bsyvasal <bsyvasal@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 13:23:16 by bsyvasal          #+#    #+#             */
-/*   Updated: 2023/10/23 13:27:59 by bsyvasal         ###   ########.fr       */
+/*   Updated: 2023/10/24 15:49:03 by bsyvasal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isalpha(int c)
 {
-	if (c >= 101 && c <= 132)
+	if (c >= 'A' && c <= 'Z')
 		return (1);
-	if (c >= 141 && c <= 172)
+	if (c >= 'a' && c <= 'z')
 		return (1);
 	return (0);
 }
