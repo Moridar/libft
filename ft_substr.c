@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsyvasal <bsyvasal@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/24 11:45:25 by bsyvasal          #+#    #+#             */
-/*   Updated: 2023/10/25 16:48:28 by bsyvasal         ###   ########.fr       */
+/*   Created: 2023/10/25 15:08:10 by bsyvasal          #+#    #+#             */
+/*   Updated: 2023/10/25 18:49:46 by bsyvasal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*ptr;
-	size_t	len;
+	char	*str;
+	int		strlen;
 
-	len = ft_strlen(s1) + 1;
-	ptr = malloc(len);
-	if (!ptr)
+	if (!s)
 		return (0);
-	ft_memcpy(ptr, s1, len);
-	return (ptr);
+	strlen = ft_strlen(s + start);
+	if (strlen < len)
+		len = strlen;
+	str = malloc(len + 1);
+	if (!str)
+		return (0);
+	if (start >= ft_strlen(s))
+	{
+		str[0] = 0;
+		return (str);
+	}
+	ft_strlcpy(str, s + start, len + 1);
+	return (str);
 }
