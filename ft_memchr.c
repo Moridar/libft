@@ -6,7 +6,7 @@
 /*   By: bsyvasal <bsyvasal@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 10:49:14 by bsyvasal          #+#    #+#             */
-/*   Updated: 2023/10/24 12:41:55 by bsyvasal         ###   ########.fr       */
+/*   Updated: 2023/10/25 10:28:14 by bsyvasal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 {
 	while (n > 0)
 	{
-		if (*(unsigned char *)s == c)
+		if (*(unsigned char *)s == (unsigned char)c)
 			return ((void *)s);
 		s++;
 		n--;

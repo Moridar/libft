@@ -6,7 +6,7 @@
 /*   By: bsyvasal <bsyvasal@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 10:54:30 by bsyvasal          #+#    #+#             */
-/*   Updated: 2023/10/24 12:41:05 by bsyvasal         ###   ########.fr       */
+/*   Updated: 2023/10/25 12:02:02 by bsyvasal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,20 @@
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
+	unsigned char	*ptr1;
+	unsigned char	*ptr2;
+
+	ptr1 = (unsigned char *)s1;
+	ptr2 = (unsigned char *)s2;
 	if (n <= 0)
 		return (0);
-	while (n-- > 0 && *(unsigned char *)(s1++) == *(unsigned char *)(s2++))
-		;
-	return (*(unsigned char *)s1 - *(unsigned char *)s2);
+	while (n > 0)
+	{
+		n--;
+		if (*ptr1 != *ptr2)
+			return (*(ptr1) - *(ptr2));
+		ptr1++;
+		ptr2++;
+	}
+	return (0);
 }
