@@ -1,44 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_power.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsyvasal <bsyvasal@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 17:04:50 by bsyvasal          #+#    #+#             */
-/*   Updated: 2023/10/26 12:13:25 by bsyvasal         ###   ########.fr       */
+/*   Created: 2023/10/26 12:51:37 by bsyvasal          #+#    #+#             */
+/*   Updated: 2023/10/26 14:42:46 by bsyvasal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+int	ft_power(int i, int p)
 {
-	int	start;
-	int	len;
-	int	i;
-
-	if (!s1 || !set)
+	if (p < 0)
 		return (0);
-	if (!*s1)
-		return ((char *) s1);
-	start = 0;
-	i = 0;
-	while (s1[i])
-	{
-		if (ft_strchr(set, s1[i]) == NULL)
-			break ;
-		i++;
-	}
-	start = i;
-	len = ft_strlen(s1 + start);
-	i = ft_strlen(s1) - 1;
-	while (s1[i])
-	{
-		if (ft_strchr(set, s1[i]) == NULL)
-			break ;
-		len--;
-		i--;
-	}
-	return (ft_substr(s1, start, len));
+	if (p == 0)
+		return (1);
+	if (p > 1)
+		return (i * ft_power(i, p - 1));
+	return (i);
 }

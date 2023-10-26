@@ -6,7 +6,7 @@
 /*   By: bsyvasal <bsyvasal@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:42:55 by bsyvasal          #+#    #+#             */
-/*   Updated: 2023/10/25 14:37:54 by bsyvasal         ###   ########.fr       */
+/*   Updated: 2023/10/26 10:49:04 by bsyvasal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	*ft_calloc(size_t count, size_t size)
 	if (!ptr)
 		return (0);
 	i = 0;
-	while (i <= size * count)
-		ptr[i++] = 0;
+	ft_bzero(ptr, count * size);
 	return (ptr);
 }
