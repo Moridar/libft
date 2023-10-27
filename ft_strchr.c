@@ -6,7 +6,7 @@
 /*   By: bsyvasal <bsyvasal@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 10:18:44 by bsyvasal          #+#    #+#             */
-/*   Updated: 2023/10/24 12:36:45 by bsyvasal         ###   ########.fr       */
+/*   Updated: 2023/10/27 17:22:55 by bsyvasal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,19 @@ char	*ft_strchr(const char *s, int c)
 	ptr = (char *) s;
 	while (*ptr)
 	{
-		if (*ptr == c)
+		if (*ptr == (char) c)
 			return (ptr);
 		ptr++;
 	}
-	if (c == 0)
+	if ((char) c == 0)
 		return (ptr);
 	return (NULL);
 }
+
+/*#include <stdio.h>
+int main(void)
+{
+	int c = 't' + 256;
+
+	printf("%c\n", c);
+}*/

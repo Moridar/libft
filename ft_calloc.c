@@ -6,7 +6,7 @@
 /*   By: bsyvasal <bsyvasal@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:42:55 by bsyvasal          #+#    #+#             */
-/*   Updated: 2023/10/26 10:49:04 by bsyvasal         ###   ########.fr       */
+/*   Updated: 2023/10/27 19:22:07 by bsyvasal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 void	*ft_calloc(size_t count, size_t size)
 {
 	char	*ptr;
-	int		i;
 
+	if ((count && size > 2147483647 / count)
+		|| (size && count > 2147483647 / size))
+		return (NULL);
 	ptr = malloc(count * size);
 	if (!ptr)
-		return (0);
-	i = 0;
+		return (NULL);
 	ft_bzero(ptr, count * size);
 	return (ptr);
 }

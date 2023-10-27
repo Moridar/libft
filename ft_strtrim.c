@@ -6,7 +6,7 @@
 /*   By: bsyvasal <bsyvasal@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 17:04:50 by bsyvasal          #+#    #+#             */
-/*   Updated: 2023/10/27 15:40:03 by bsyvasal         ###   ########.fr       */
+/*   Updated: 2023/10/27 18:03:36 by bsyvasal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (!s1 || !set)
 		return (0);
 	if (!*s1)
-		return ((char *) s1);
+		return (ft_strdup(""));
 	i = 0;
 	while (s1[i])
 	{

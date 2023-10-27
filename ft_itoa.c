@@ -6,12 +6,22 @@
 /*   By: bsyvasal <bsyvasal@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 12:28:02 by bsyvasal          #+#    #+#             */
-/*   Updated: 2023/10/27 14:43:27 by bsyvasal         ###   ########.fr       */
+/*   Updated: 2023/10/27 19:19:30 by bsyvasal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
+
+int static	intlen(int n)
+{
+	int	i;
+
+	i = 1;
+	while (ft_power(10, i++) <= n)
+		if (i == 11)
+			break ;
+	return (i);
+}
 
 char	*ft_itoa(int n)
 {
@@ -20,30 +30,24 @@ char	*ft_itoa(int n)
 	int		i;
 
 	neg = 0;
-	i = 1;
 	if (n < 0)
 	{
 		if (n == -2147483648)
 			return (ft_strdup("-2147483648"));
-		return (ft_strjoin("-", ft_itoa(n * -1)));
+		n = n * -1;
+		neg = 1;
 	}
-	while (ft_power(10, i++) <= n)
-		if (i == 11)
-			break ;
-	str = malloc(i--);
+	i = intlen(n);
+	str = malloc(neg + i--);
 	if (!str)
 		return (0);
-	str[i--] = 0;
+	str[neg + i--] = 0;
 	while (i >= 0)
 	{
-		str[i--] = n % 10 + 48;
+		str[neg + i--] = n % 10 + 48;
 		n /= 10;
 	}
+	if (neg)
+		str[0] = '-';
 	return (str);
 }
-
-/*int	main(void)
-{
-	int i = 2147483647;
-	printf("ft_itoa(%d) = %s\n", i, ft_itoa(i));
-}*/

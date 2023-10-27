@@ -6,7 +6,7 @@
 /*   By: bsyvasal <bsyvasal@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 10:54:47 by bsyvasal          #+#    #+#             */
-/*   Updated: 2023/10/27 16:48:17 by bsyvasal         ###   ########.fr       */
+/*   Updated: 2023/10/27 18:35:51 by bsyvasal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ int	wordsinstr(char const *s, char c)
 		while (s[i] == c && s[i])
 			i++;
 		old_i = i;
-		if (!s[i])
-			return (j);
 		while (s[i] != c && s[i])
 			i++;
 		if (i != old_i)
@@ -54,7 +52,7 @@ char	**ft_split(char const *s, char c)
 			i++;
 		if (i)
 			strarr[j++] = ft_substr(s, 0, i);
-		while (s[i] == c)
+		while (s[i] == c && s[i])
 			i++;
 		s += i;
 		i = 0;
