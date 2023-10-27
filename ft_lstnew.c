@@ -6,7 +6,7 @@
 /*   By: bsyvasal <bsyvasal@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 10:33:51 by bsyvasal          #+#    #+#             */
-/*   Updated: 2023/10/27 10:58:29 by bsyvasal         ###   ########.fr       */
+/*   Updated: 2023/10/27 14:07:57 by bsyvasal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_list	*ft_lstnew(void *content)
 	lstnew = malloc(sizeof(t_list));
 	if (!lstnew)
 		return (0);
-	(*lstnew).content = content;
-	(*lstnew).next = NULL;
+	lstnew->content = content;
+	lstnew->next = NULL;
 	return (lstnew);
 }
