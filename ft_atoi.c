@@ -6,7 +6,7 @@
 /*   By: bsyvasal <bsyvasal@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:16:21 by bsyvasal          #+#    #+#             */
-/*   Updated: 2023/10/25 14:11:17 by bsyvasal         ###   ########.fr       */
+/*   Updated: 2023/10/27 15:22:51 by bsyvasal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,22 @@ int	is_space(char c)
 int	ft_atoi(const char *str)
 {
 	int	i;
-	int	neg;
+	int	sign;
 
 	i = 0;
-	neg = 1;
+	sign = 1;
 	while (is_space(*str))
 		str++;
-	while (*str == '+' || *str == '-')
+	if (*str == '+' || *str == '-')
 	{
 		if (*str == '-')
-			neg *= -1;
+			sign *= -1;
 		str++;
 	}
 	while (ft_isdigit(*str))
 	{
-		i = i * 10 + *str - 48;
+		i = i * 10 + *str - '0';
 		str++;
 	}
-	return (i * neg);
+	return (i * sign);
 }

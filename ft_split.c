@@ -6,7 +6,7 @@
 /*   By: bsyvasal <bsyvasal@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 10:54:47 by bsyvasal          #+#    #+#             */
-/*   Updated: 2023/10/26 12:26:52 by bsyvasal         ###   ########.fr       */
+/*   Updated: 2023/10/27 16:48:17 by bsyvasal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,21 @@ int	wordsinstr(char const *s, char c)
 {
 	int	i;
 	int	j;
+	int	old_i;
 
 	i = 0;
 	j = 0;
 	while (s[i])
 	{
-		while (s[i++] == c)
-			;
-		while (s[i++] != c)
-			;
-		j++;
+		while (s[i] == c && s[i])
+			i++;
+		old_i = i;
+		if (!s[i])
+			return (j);
+		while (s[i] != c && s[i])
+			i++;
+		if (i != old_i)
+			j++;
 	}
 	return (j);
 }
@@ -45,7 +50,7 @@ char	**ft_split(char const *s, char c)
 	j = 0;
 	while (s[i])
 	{
-		while (s[i] != c)
+		while (s[i] && s[i] != c)
 			i++;
 		if (i)
 			strarr[j++] = ft_substr(s, 0, i);
@@ -57,20 +62,16 @@ char	**ft_split(char const *s, char c)
 	strarr[j] = 0;
 	return (strarr);
 }
-/*
-#include <stdio.h>
-int main(void)
-{
-	char *str = "  this   is long   !  ";
-	char **res = ft_split(str, ' ');
-	int i = 0;
 
-	// just to see the null at the end
-	while (res[i - 1])
-	{
-		printf("num of words %d", i);
-		printf("%s\n\n", res[i]);
-		i++;
-	}
+/*#include <stdio.h>
+int	main(void)
+{
+	char	**strtab;
+	char	*str = "hel hel hel hel hel       hel";
+	char	c = ' ';
+
+	strtab = ft_split(str, c);
+	while (*strtab)
+		printf("%s\n", *(strtab++));
 }
 */

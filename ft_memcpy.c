@@ -6,7 +6,7 @@
 /*   By: bsyvasal <bsyvasal@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:32:21 by bsyvasal          #+#    #+#             */
-/*   Updated: 2023/10/25 10:19:50 by bsyvasal         ###   ########.fr       */
+/*   Updated: 2023/10/27 14:46:26 by bsyvasal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	if (dst == NULL && src == NULL)

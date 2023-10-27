@@ -6,7 +6,7 @@
 /*   By: bsyvasal <bsyvasal@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 17:04:50 by bsyvasal          #+#    #+#             */
-/*   Updated: 2023/10/27 11:07:58 by bsyvasal         ###   ########.fr       */
+/*   Updated: 2023/10/27 15:40:03 by bsyvasal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 		i++;
 	}
 	start = i;
+	if (!s1[start])
+		return (ft_strdup(""));
 	i = ft_strlen(s1) - 1;
 	while (s1[i])
 	{

@@ -6,7 +6,7 @@
 /*   By: bsyvasal <bsyvasal@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 12:28:02 by bsyvasal          #+#    #+#             */
-/*   Updated: 2023/10/27 10:15:37 by bsyvasal         ###   ########.fr       */
+/*   Updated: 2023/10/27 14:43:27 by bsyvasal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_itoa(int n)
 			return (ft_strdup("-2147483648"));
 		return (ft_strjoin("-", ft_itoa(n * -1)));
 	}
-	while (ft_power(10, i++) < n)
+	while (ft_power(10, i++) <= n)
 		if (i == 11)
 			break ;
 	str = malloc(i--);
