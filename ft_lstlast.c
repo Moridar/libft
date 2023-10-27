@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_power.c                                         :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsyvasal <bsyvasal@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/26 12:51:37 by bsyvasal          #+#    #+#             */
-/*   Updated: 2023/10/27 10:58:43 by bsyvasal         ###   ########.fr       */
+/*   Created: 2023/10/27 11:12:35 by bsyvasal          #+#    #+#             */
+/*   Updated: 2023/10/27 11:15:20 by bsyvasal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_power(int i, int p)
+t_list	*ft_lstlast(t_list *lst)
 {
-	if (p < 0)
+	if (!lst)
 		return (0);
-	if (p == 0)
-		return (1);
-	if (p > 1)
-		return (i * ft_power(i, p - 1));
-	return (i);
+	while (lst -> next)
+		lst = lst -> next;
+	return (lst);
 }

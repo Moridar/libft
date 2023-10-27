@@ -6,7 +6,7 @@
 /*   By: bsyvasal <bsyvasal@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 12:28:02 by bsyvasal          #+#    #+#             */
-/*   Updated: 2023/10/26 14:47:20 by bsyvasal         ###   ########.fr       */
+/*   Updated: 2023/10/27 10:15:37 by bsyvasal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ char	*ft_itoa(int n)
 	return (str);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	int i = 2147483647;
 	printf("ft_itoa(%d) = %s\n", i, ft_itoa(i));
-}
+}*/

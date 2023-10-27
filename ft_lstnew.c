@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_power.c                                         :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsyvasal <bsyvasal@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/26 12:51:37 by bsyvasal          #+#    #+#             */
-/*   Updated: 2023/10/27 10:58:43 by bsyvasal         ###   ########.fr       */
+/*   Created: 2023/10/27 10:33:51 by bsyvasal          #+#    #+#             */
+/*   Updated: 2023/10/27 10:58:29 by bsyvasal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_power(int i, int p)
+t_list	*ft_lstnew(void *content)
 {
-	if (p < 0)
+	t_list	*lstnew;
+
+	lstnew = malloc(sizeof(t_list));
+	if (!lstnew)
 		return (0);
-	if (p == 0)
-		return (1);
-	if (p > 1)
-		return (i * ft_power(i, p - 1));
-	return (i);
+	(*lstnew).content = content;
+	(*lstnew).next = NULL;
+	return (lstnew);
 }

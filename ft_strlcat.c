@@ -6,7 +6,7 @@
 /*   By: bsyvasal <bsyvasal@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 09:52:45 by bsyvasal          #+#    #+#             */
-/*   Updated: 2023/10/25 13:55:12 by bsyvasal         ###   ########.fr       */
+/*   Updated: 2023/10/27 11:58:16 by bsyvasal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	dstlen = ft_strlen(dst);
 	if (dstsize < dstlen)
 		return (ft_strlen(src) + dstsize);
-	while (dst[i])
-		i++;
+	i = dstlen;
 	while (i + 1 < dstsize && src[j])
 		dst[i++] = src[j++];
 	if (j)

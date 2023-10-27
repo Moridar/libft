@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_power.c                                         :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsyvasal <bsyvasal@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/26 12:51:37 by bsyvasal          #+#    #+#             */
-/*   Updated: 2023/10/27 10:58:43 by bsyvasal         ###   ########.fr       */
+/*   Created: 2023/10/27 11:37:31 by bsyvasal          #+#    #+#             */
+/*   Updated: 2023/10/27 12:06:23 by bsyvasal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_power(int i, int p)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	if (p < 0)
-		return (0);
-	if (p == 0)
-		return (1);
-	if (p > 1)
-		return (i * ft_power(i, p - 1));
-	return (i);
+	if (!del || !lst)
+		return ;
+	if ((*lst)->next)
+		ft_lstclear(&(*lst)->next, del);
+	del((*lst)->content);
+	free(*lst);
+	*lst = NULL;
 }

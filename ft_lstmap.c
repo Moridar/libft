@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_power.c                                         :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsyvasal <bsyvasal@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/26 12:51:37 by bsyvasal          #+#    #+#             */
-/*   Updated: 2023/10/27 10:58:43 by bsyvasal         ###   ########.fr       */
+/*   Created: 2023/10/27 12:09:02 by bsyvasal          #+#    #+#             */
+/*   Updated: 2023/10/27 12:32:42 by bsyvasal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_power(int i, int p)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	if (p < 0)
-		return (0);
-	if (p == 0)
-		return (1);
-	if (p > 1)
-		return (i * ft_power(i, p - 1));
-	return (i);
+	t_list	*newlst;
+
+	newlst = ft_lstnew(f(lst->content));
+	newlst->next = lst->next;
+	if (lst->next)
+		return (ft_lstmap(newlst, f, del));
+	else
+		return (newlst);
 }
