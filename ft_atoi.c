@@ -6,7 +6,7 @@
 /*   By: bsyvasal <bsyvasal@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:16:21 by bsyvasal          #+#    #+#             */
-/*   Updated: 2023/10/30 15:02:04 by bsyvasal         ###   ########.fr       */
+/*   Updated: 2023/10/30 15:35:11 by bsyvasal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,12 @@ int	ft_atoi(const char *str)
 	{
 		i = i * 10 + *str - '0';
 		if (i < 0)
-			return (-1);
+		{
+			if (sign == 1)
+				return (-1);
+			else
+				return (0);
+		}
 		str++;
 	}
 	return ((int) i * sign);
