@@ -12,6 +12,7 @@ SRCS = 	ft_atoi.c \
 		ft_isascii.c \
 		ft_isdigit.c \
 		ft_isprint.c \
+		ft_isspace.c \
 		ft_itoa.c \
 		ft_memchr.c \
 		ft_memcmp.c \
@@ -71,6 +72,7 @@ $(NAME):
 # Create and add bonus into libft.a
 bonus:
 	cc $(CFLAGS) -c $(BONUS_SRCS)
+	mkdir -p $(OBJ_DIR)
 	mv $(BONUS_OBJS) $(OBJ_DIR)
 	ar rc $(NAME) $(BONUS_OBJS:%.o=$(OBJ_DIR)%.o)
 # Clean up

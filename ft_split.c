@@ -6,11 +6,12 @@
 /*   By: bsyvasal <bsyvasal@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 10:54:47 by bsyvasal          #+#    #+#             */
-/*   Updated: 2023/10/27 18:35:51 by bsyvasal         ###   ########.fr       */
+/*   Updated: 2023/10/30 14:49:29 by bsyvasal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 int	wordsinstr(char const *s, char c)
 {
@@ -20,6 +21,7 @@ int	wordsinstr(char const *s, char c)
 
 	i = 0;
 	j = 0;
+	old_i = 0;
 	while (s[i])
 	{
 		while (s[i] == c && s[i])
@@ -60,16 +62,3 @@ char	**ft_split(char const *s, char c)
 	strarr[j] = 0;
 	return (strarr);
 }
-
-/*#include <stdio.h>
-int	main(void)
-{
-	char	**strtab;
-	char	*str = "hel hel hel hel hel       hel";
-	char	c = ' ';
-
-	strtab = ft_split(str, c);
-	while (*strtab)
-		printf("%s\n", *(strtab++));
-}
-*/
