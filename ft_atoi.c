@@ -6,7 +6,7 @@
 /*   By: bsyvasal <bsyvasal@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:16:21 by bsyvasal          #+#    #+#             */
-/*   Updated: 2023/10/27 15:22:51 by bsyvasal         ###   ########.fr       */
+/*   Updated: 2023/10/30 13:12:54 by bsyvasal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,15 @@ int	ft_atoi(const char *str)
 		str++;
 	}
 	return (i * sign);
+}
+
+#include <stdio.h>
+int	main(void)
+{
+	char	*str = "12345678900";
+
+	printf("str: \t\t %s\n", str);
+	printf("ft_atoi(): \t %d\n", ft_atoi(str));
+	printf("atoi: \t\t %d\n", atoi(str));
+
 }

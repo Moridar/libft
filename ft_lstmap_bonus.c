@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsyvasal <bsyvasal@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 16:30:05 by bsyvasal          #+#    #+#             */
-/*   Updated: 2023/10/30 13:09:10 by bsyvasal         ###   ########.fr       */
+/*   Created: 2023/10/27 12:09:02 by bsyvasal          #+#    #+#             */
+/*   Updated: 2023/10/30 10:14:46 by bsyvasal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	char	*str;
-	int		s1len;
-	int		s2len;
+	t_list	*newlst;
+	t_list	*tmp;
 
-	if (!s1 || !s2)
-		return (0);
-	s1len = ft_strlen(s1);
-	s2len = ft_strlen(s2);
-	str = malloc (s1len + s2len + 1);
-	if (!str)
-		return (0);
-	ft_memcpy(str, s1, s1len);
-	ft_memcpy(str + s1len, s2, s2len + 1);
-	return (str);
+	newlst = NULL;
+	while (lst)
+	{
+		tmp = ft_lstnew(lst->content);
+		if (!tmp)
+		{
+			ft_lstclear(&newlst, del);
+			return (0);
+		}
+		tmp->content = f(tmp->content);
+		ft_lstadd_back(&newlst, tmp);
+		lst = lst->next;
+	}
+	return (newlst);
 }

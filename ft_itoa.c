@@ -6,7 +6,7 @@
 /*   By: bsyvasal <bsyvasal@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 12:28:02 by bsyvasal          #+#    #+#             */
-/*   Updated: 2023/10/27 19:19:30 by bsyvasal         ###   ########.fr       */
+/*   Updated: 2023/10/30 10:53:28 by bsyvasal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int static	intlen(int n)
 	int	i;
 
 	i = 1;
-	while (ft_power(10, i++) <= n)
-		if (i == 11)
+	while (ft_power(10, i) <= n)
+		if (++i == 10)
 			break ;
 	return (i);
 }
@@ -37,7 +37,7 @@ char	*ft_itoa(int n)
 		n = n * -1;
 		neg = 1;
 	}
-	i = intlen(n);
+	i = intlen(n) + 1;
 	str = malloc(neg + i--);
 	if (!str)
 		return (0);
