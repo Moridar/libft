@@ -6,7 +6,7 @@
 /*   By: bsyvasal <bsyvasal@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 09:35:09 by bsyvasal          #+#    #+#             */
-/*   Updated: 2023/10/27 10:59:13 by bsyvasal         ###   ########.fr       */
+/*   Updated: 2023/10/31 10:34:14 by bsyvasal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
 	int	i;
 
-	if (!s)
+	if (!s || !f)
 		return ;
 	i = -1;
 	while (s[++i])
-	{
 		f(i, &s[i]);
-	}
 }

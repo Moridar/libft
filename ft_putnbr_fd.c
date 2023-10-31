@@ -6,7 +6,7 @@
 /*   By: bsyvasal <bsyvasal@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 09:43:55 by bsyvasal          #+#    #+#             */
-/*   Updated: 2023/10/27 10:58:56 by bsyvasal         ###   ########.fr       */
+/*   Updated: 2023/10/31 10:24:55 by bsyvasal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	if (n >= 1)
+	if (n >= 0)
 	{
 		if (n >= 10)
 			ft_putnbr_fd(n / 10, fd);
@@ -33,13 +33,4 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putnbr_fd(n * -1, fd);
 		return ;
 	}
-	if (n == 0)
-		write(fd, "0", 1);
 }
-/*
-int main(void)
-{
-	write(1, "hello\n", 6);
-	ft_putnbr_fd(2147483647, 1);
-	write(1, "\n", 1);
-}*/

@@ -6,7 +6,7 @@
 /*   By: bsyvasal <bsyvasal@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:08:10 by bsyvasal          #+#    #+#             */
-/*   Updated: 2023/10/30 15:00:20 by bsyvasal         ###   ########.fr       */
+/*   Updated: 2023/10/31 11:20:33 by bsyvasal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char	*str;
 	size_t	strlen;
 
-	if (!s || !*s)
+	if (!s)
 		return (0);
 	strlen = ft_strlen(s + start);
 	if (strlen < len)

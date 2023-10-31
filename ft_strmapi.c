@@ -6,7 +6,7 @@
 /*   By: bsyvasal <bsyvasal@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 09:27:06 by bsyvasal          #+#    #+#             */
-/*   Updated: 2023/10/27 09:34:17 by bsyvasal         ###   ########.fr       */
+/*   Updated: 2023/10/31 11:01:05 by bsyvasal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char	*str;
 	int		i;
 
-	if (!s)
+	if (!s || !f)
 		return (0);
 	str = malloc(ft_strlen(s) + 1);
 	if (!str)

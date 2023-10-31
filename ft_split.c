@@ -6,14 +6,14 @@
 /*   By: bsyvasal <bsyvasal@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 10:54:47 by bsyvasal          #+#    #+#             */
-/*   Updated: 2023/10/30 14:49:29 by bsyvasal         ###   ########.fr       */
+/*   Updated: 2023/10/31 10:28:21 by bsyvasal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-int	wordsinstr(char const *s, char c)
+static int	wordsinstr(char const *s, char c)
 {
 	int	i;
 	int	j;
@@ -35,6 +35,24 @@ int	wordsinstr(char const *s, char c)
 	return (j);
 }
 
+static int	strarradd(char **strarr, char const *s, int j, int i)
+{
+	char	*str;
+
+	str = ft_substr(s, 0, i);
+	if (!str)
+	{
+		while (--j >= 0)
+		{
+			free(strarr[j]);
+		}
+		free(strarr);
+		return (0);
+	}
+	strarr[j] = str;
+	return (1);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**strarr;
@@ -53,7 +71,8 @@ char	**ft_split(char const *s, char c)
 		while (s[i] && s[i] != c)
 			i++;
 		if (i)
-			strarr[j++] = ft_substr(s, 0, i);
+			if (!strarradd(strarr, s, j++, i))
+				return (0);
 		while (s[i] == c && s[i])
 			i++;
 		s += i;

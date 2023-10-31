@@ -6,7 +6,7 @@
 /*   By: bsyvasal <bsyvasal@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 10:18:44 by bsyvasal          #+#    #+#             */
-/*   Updated: 2023/10/27 17:22:55 by bsyvasal         ###   ########.fr       */
+/*   Updated: 2023/10/31 10:29:11 by bsyvasal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,3 @@ char	*ft_strchr(const char *s, int c)
 		return (ptr);
 	return (NULL);
 }
-
-/*#include <stdio.h>
-int main(void)
-{
-	int c = 't' + 256;
-
-	printf("%c\n", c);
-}*/
