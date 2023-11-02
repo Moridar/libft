@@ -1,9 +1,22 @@
-# Makefile
+# Makefile for libft
+# Auother: Bobbie Syvasalmi
+# Version 1.0
+# Date: 31/10/2023
+
+# Usage:
+#	make basic	- build libft.a without bonus
+#	make bonus	- adds the bonus to libft.a
+#	make all	- basic + bonus
+#	make clean	- deletes the objects and the objs folder
+#	make fclean	- clean + deletes libft.a
+#	make re		- fclean + all
 
 # Directories
 OBJ_DIR = objs/
 
 # List of source files
+HEADER = libft.h
+
 SRCS = 	ft_atoi.c \
 		ft_bzero.c \
 		ft_calloc.c \
@@ -59,29 +72,46 @@ BONUS_OBJS = $(BONUS_SRCS:%.c=%.o)
 NAME = libft.a 
 
 # CC Flags
-CFlags = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
+
 
 # Default rule
-all: $(NAME)
+.phony = basic
+basic: $(NAME)
+
+# Both basic and bonus files
+.phony = all
+all: basic bonus
+
 # Create o. files in obj folder and archive into .a file.
 $(NAME):
-	cc $(CFLAGS) -c $(SRCS)
+	cc $(CFLAGS) -c $(SRCS) -I $(HEADER)
 	mkdir -p $(OBJ_DIR)
 	mv $(OBJS) $(OBJ_DIR)
-	ar rc $(NAME) $(OBJS:%.o=$(OBJ_DIR)%.o)
+	ar rc $(NAME) $(OBJS:%.o=$(OBJ_DIR)%.o) 
+
 # Create and add bonus into libft.a
-bonus:
-	cc $(CFLAGS) -c $(BONUS_SRCS)
+.phony = bonus
+bonus: $(BONUS_OBJS:%=$(OBJ_DIR)%)
+
+$(OBJ_DIR) :
 	mkdir -p $(OBJ_DIR)
-	mv $(BONUS_OBJS) $(OBJ_DIR)
-	ar rc $(NAME) $(BONUS_OBJS:%.o=$(OBJ_DIR)%.o)
+
+# Check each _bonus.o and recreate if there is 
+$(OBJ_DIR)%_bonus.o: %_bonus.c | $(OBJ_DIR)
+	cc $(CFLAGS) -c $< -I $(HEADER) -o $@
+	ar rc $(NAME)$@
+
 # Clean up
+.phony = clean
 clean: 
 	rm -rf $(OBJ_DIR)
+
 # Full clean up
+.phony = fclean
 fclean: clean
 	rm -rf $(NAME)
-# Clean up and re-create
-re: fclean all bonus
-	
 
+# Clean up and re-create
+.phony = re
+re: fclean all
