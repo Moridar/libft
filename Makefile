@@ -11,13 +11,13 @@
 #	make fclean	- clean + deletes libft.a
 #	make re		- fclean + all
 
-# Directories
-OBJ_DIR = objs/
-
 # List of source files
-HEADER = libft.h
+HEADER = libft.h 
+#		printf/ft_printf_bonus.h \
+#		get_next_line/get_next_line.h
 
 SRCS = 	ft_atoi.c \
+		ft_atod.c \
 		ft_bzero.c \
 		ft_calloc.c \
 		ft_isalnum.c \
@@ -64,9 +64,19 @@ BONUS_SRCS = 	ft_lstadd_back_bonus.c \
 				ft_lstnew_bonus.c \
 				ft_lstsize_bonus.c
 
+GNL_SRCS = get_next_line/get_next_line.c 
+
+PRINTF_SRCS =	printf/ft_printf_bonus.c \
+				printf/ft_printf_cs_bonus.c \
+				printf/ft_printf_dipux_bonus.c \
+				printf/ft_itoa_type_bonus.c \
+				printf/ft_printf_helpers_bonus.c
+
 #The objects
 OBJS = $(SRCS:%.c=%.o)
 BONUS_OBJS = $(BONUS_SRCS:%.c=%.o)
+GNL_OBJS = $(GNL_SRCS:%.c=%.o)
+PRINTF_OBJS = $(PRINTF_SRCS:%.c=%.o)
 
 # Libary name
 NAME = libft.a 
@@ -75,37 +85,39 @@ NAME = libft.a
 CFLAGS = -Wall -Wextra -Werror
 
 
-# Default rule
-.phony = basic
-basic: $(NAME)
-
-# Both basic and bonus files
+# Default rule - All
 .phony = all
-all: basic bonus
+all: basic bonus gnl printf
 
-# Create o. files in obj folder and archive into .a file.
-$(NAME):
-	cc $(CFLAGS) -c $(SRCS) -I $(HEADER)
-	mkdir -p $(OBJ_DIR)
-	mv $(OBJS) $(OBJ_DIR)
-	ar rc $(NAME) $(OBJS:%.o=$(OBJ_DIR)%.o) 
+# 
+$(NAME): all
 
-# Create and add bonus into libft.a
+# Only basic
+.phony = basic
+basic: $(OBJS)
+
+# Libft bonus
 .phony = bonus
-bonus: $(BONUS_OBJS:%=$(OBJ_DIR)%)
+bonus: $(BONUS_OBJS)
 
-$(OBJ_DIR) :
-	mkdir -p $(OBJ_DIR)
+# Get Next Line
+.phony = gnl
+gnl: $(GNL_OBJS)
+
+# Printf
+.phony = printf
+printf: $(PRINTF_OBJS)
 
 # Check each _bonus.o and recreate if there is 
-$(OBJ_DIR)%_bonus.o: %_bonus.c | $(OBJ_DIR)
-	cc $(CFLAGS) -c $< -I $(HEADER) -o $@
-	ar rc $(NAME)$@
+%.o: %.c
+	@cc $(CFLAGS) -c $< -I $(HEADER) -o $@
+	@ar rc $(NAME)$@
+	@ranlib $(NAME)
 
 # Clean up
 .phony = clean
 clean: 
-	rm -rf $(OBJ_DIR)
+	rm -rf $(OBJS) $(BONUS_OBJS) $(GNL_OBJS) $(PRINTF_OBJS)
 
 # Full clean up
 .phony = fclean

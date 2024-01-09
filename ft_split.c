@@ -6,36 +6,37 @@
 /*   By: bsyvasal <bsyvasal@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 10:54:47 by bsyvasal          #+#    #+#             */
-/*   Updated: 2023/10/31 10:28:21 by bsyvasal         ###   ########.fr       */
+/*   Updated: 2023/11/08 10:35:26 by bsyvasal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-static int	wordsinstr(char const *s, char c)
+static int	count_words(char const *s, char c)
 {
 	int	i;
-	int	j;
-	int	old_i;
+	int	wordscount;
+	int	foundword;
 
 	i = 0;
-	j = 0;
-	old_i = 0;
+	wordscount = 0;
 	while (s[i])
 	{
+		foundword = 0;
 		while (s[i] == c && s[i])
 			i++;
-		old_i = i;
 		while (s[i] != c && s[i])
+		{
 			i++;
-		if (i != old_i)
-			j++;
+			foundword = 1;
+		}
+		if (foundword)
+			wordscount++;
 	}
-	return (j);
+	return (wordscount);
 }
 
-static int	strarradd(char **strarr, char const *s, int j, int i)
+static int	arrayaddword(char **strarr, char const *s, int j, int i)
 {
 	char	*str;
 
@@ -61,7 +62,7 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 		return (0);
-	strarr = malloc((wordsinstr(s, c) + 1) * sizeof (char *));
+	strarr = malloc((count_words(s, c) + 1) * sizeof (char *));
 	if (!strarr)
 		return (0);
 	i = 0;
@@ -71,7 +72,7 @@ char	**ft_split(char const *s, char c)
 		while (s[i] && s[i] != c)
 			i++;
 		if (i)
-			if (!strarradd(strarr, s, j++, i))
+			if (!arrayaddword(strarr, s, j++, i))
 				return (0);
 		while (s[i] == c && s[i])
 			i++;
