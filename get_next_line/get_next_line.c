@@ -6,7 +6,7 @@
 /*   By: bsyvasal <bsyvasal@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 10:39:02 by bsyvasal          #+#    #+#             */
-/*   Updated: 2023/11/27 14:06:37 by bsyvasal         ###   ########.fr       */
+/*   Updated: 2024/02/06 10:11:07 by bsyvasal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,9 @@ static char	*ft_strjoin_and_free(char *s1, char *s2)
 	if (!s1 && !s2)
 		return (0);
 	if (!s1)
-		return (ft_substr(s2, 0, ft_strlen(s2)));
+		return (ft_strdup(s2));
 	if (!s2)
-	{
-		free(s1);
-		return (ft_substr(s1, 0, ft_strlen(s1)));
-	}
+		return (s1);
 	s1len = ft_strlen(s1);
 	s2len = ft_strlen(s2);
 	str = malloc (s1len + s2len + 1);
